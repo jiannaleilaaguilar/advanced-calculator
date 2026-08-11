@@ -1,0 +1,20 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+
+# Environment & local settings
+venv/
+.env
+
+# Generated application data and logs
+logs/
+data/
+*.log
+*.csv
+
+# OS specific
+.DS_Store
+Thumbs.db
