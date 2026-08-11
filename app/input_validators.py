@@ -1,13 +1,16 @@
 from app.exceptions import ValidationError
 
-def validate_number(val, max_val=None) -> float:
-    """Validates and converts a string input into a float."""
+
+def validate_number(value_str: str, max_val: float) -> float:
     try:
-        num = float(val)
-    except (ValueError, TypeError):
-        raise ValidationError(f"Invalid input '{val}'. Input must be a valid number.")
-    
-    if max_val is not None and abs(num) > max_val:
-        raise ValidationError(f"Input value {num} exceeds maximum allowed boundary ({max_val}).")
-    
-    return num
+        val = float(value_str)
+    except ValueError:
+        raise ValidationError(
+            f"Invalid input '{value_str}'. Input must be a valid number."
+        )
+
+    if abs(val) > max_val:
+        raise ValidationError(
+            f"Input {val} exceeds maximum allowable limit of {max_val}."
+        )
+    return val

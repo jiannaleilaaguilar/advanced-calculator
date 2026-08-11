@@ -4,10 +4,12 @@ import logging
 import pandas as pd
 from app.calculation import Calculation
 
+
 class Observer(ABC):
     @abstractmethod
     def update(self, calculation: Calculation):
         pass
+
 
 class LoggingObserver(Observer):
     def __init__(self, log_file: str):
@@ -21,8 +23,11 @@ class LoggingObserver(Observer):
 
     def update(self, calculation: Calculation):
         self.logger.info(
-            f"Operation: {calculation.operation} | Inputs: ({calculation.a}, {calculation.b}) | Result: {calculation.result}"
+            f"Operation: {calculation.operation} | "
+            f"Inputs: ({calculation.a}, {calculation.b}) | "
+            f"Result: {calculation.result}"
         )
+
 
 class AutoSaveObserver(Observer):
     def __init__(self, file_path: str):

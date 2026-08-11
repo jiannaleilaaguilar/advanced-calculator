@@ -5,6 +5,7 @@ from app.operations import (
 )
 from app.exceptions import OperationError, ValidationError
 
+
 def test_concrete_operations_directly():
     assert Addition().execute(10, 5) == 15
     assert Subtraction().execute(10, 5) == 5
@@ -16,6 +17,7 @@ def test_concrete_operations_directly():
     assert IntegerDivision().execute(10, 3) == 3
     assert Percentage().execute(20, 100) == 20.0
     assert AbsoluteDifference().execute(5, 10) == 5
+
 
 def test_operation_errors():
     with pytest.raises(OperationError):
@@ -31,6 +33,7 @@ def test_operation_errors():
     with pytest.raises(OperationError):
         Percentage().execute(10, 0)
 
+
 def test_operation_factory():
     assert isinstance(OperationFactory.create('add'), Addition)
     assert isinstance(OperationFactory.create('subtract'), Subtraction)
@@ -42,6 +45,7 @@ def test_operation_factory():
     assert isinstance(OperationFactory.create('int_divide'), IntegerDivision)
     assert isinstance(OperationFactory.create('percent'), Percentage)
     assert isinstance(OperationFactory.create('abs_diff'), AbsoluteDifference)
+
 
 def test_invalid_factory_key():
     with pytest.raises(ValidationError):

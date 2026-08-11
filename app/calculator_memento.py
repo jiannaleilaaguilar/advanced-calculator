@@ -1,6 +1,7 @@
 from typing import List
 from app.calculation import Calculation
 
+
 class Memento:
     """Stores a snapshot of calculation history."""
     def __init__(self, history: List[Calculation]):
@@ -8,6 +9,7 @@ class Memento:
 
     def get_state(self) -> List[Calculation]:
         return list(self._state)
+
 
 class HistoryCaretaker:
     """Manages undo and redo stacks using Mementos."""

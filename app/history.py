@@ -4,6 +4,7 @@ from typing import List
 from app.calculation import Calculation
 from app.logger import Observer
 
+
 class HistoryManager:
     def __init__(self):
         self.history: List[Calculation] = []
@@ -32,6 +33,9 @@ class HistoryManager:
         df = pd.read_csv(file_path)
         self.history.clear()
         for _, row in df.iterrows():
-            calc = Calculation(row['operation'], float(row['a']), float(row['b']), float(row['result']))
+            calc = Calculation(
+                row['operation'], float(row['a']),
+                float(row['b']), float(row['result'])
+            )
             calc.timestamp = str(row['timestamp'])
             self.history.append(calc)
